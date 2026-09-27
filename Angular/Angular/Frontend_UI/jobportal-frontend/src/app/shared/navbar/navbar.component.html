@@ -1,0 +1,26 @@
+<nav class="navbar">
+  <div class="nav-left">
+    <a routerLink="/" routerLinkActive="active-link">Home</a>
+    <a routerLink="/jobs" routerLinkActive="active-link">Jobs</a>
+
+    <!-- COMPANY links -->
+    <a routerLink="/jobs/create" *ngIf="auth.isLoggedIn() && auth.getUserRole() === 'COMPANY'" routerLinkActive="active-link">
+      Create Job
+    </a>
+    <!-- <a routerLink="/applicants" *ngIf="auth.isLoggedIn() && auth.getUserRole() === 'COMPANY'" routerLinkActive="active-link">
+      View Applicants
+    </a> -->
+
+    <!-- JOB_SEEKER links -->
+    <a routerLink="/applications" *ngIf="auth.isLoggedIn() && auth.getUserRole() === 'JOB_SEEKER'" routerLinkActive="active-link">
+      My Applications
+    </a>
+  </div>
+
+  <div class="nav-right">
+    <!-- Auth Buttons -->
+    <button *ngIf="!auth.isLoggedIn()" routerLink="/login">Login</button>
+    <button *ngIf="!auth.isLoggedIn()" routerLink="/signup">Signup</button>
+    <button *ngIf="auth.isLoggedIn()" (click)="logout()">Logout</button>
+  </div>
+</nav>

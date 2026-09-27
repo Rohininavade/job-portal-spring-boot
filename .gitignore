@@ -1,0 +1,38 @@
+
+# Maven / Spring Boot
+target/
+*.class
+*.jar
+*.war
+*.log
+
+# Local Spring configuration
+application-local.properties
+application-local.yml
+application-*.properties
+application-*.yml
+
+# Node / Angular
+**/node_modules/
+**/dist/
+**/.angular/cache/
+**/coverage/
+*.tsbuildinfo
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# OS files
+.DS_Store
+Thumbs.db

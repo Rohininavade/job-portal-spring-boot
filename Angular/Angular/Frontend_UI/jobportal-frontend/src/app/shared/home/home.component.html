@@ -1,0 +1,32 @@
+<div class="home-container">
+  <div class="hero-section">
+    <div class="hero-content">
+      <h1>Welcome to Job Portal</h1>
+      <p>Find your dream job or post openings to hire the best talent.</p>
+      <div class="hero-buttons">
+        <button (click)="browseJobs()" class="primary-btn">Browse Jobs</button>
+        <button (click)="postJob()" class="secondary-btn">Post a Job</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="features-section">
+    <div class="feature-card" (click)="browseJobs()">
+      <i class="fa fa-search"></i>
+      <h3>Explore Jobs</h3>
+      <p>Search and apply for jobs that match your skills and interests.</p>
+    </div>
+
+    <div class="feature-card" (click)="postJob()">
+      <i class="fa fa-briefcase"></i>
+      <h3>Hire Talent</h3>
+      <p>Post job openings and connect with qualified professionals.</p>
+    </div>
+
+    <div class="feature-card">
+      <i class="fa fa-user"></i>
+      <h3>Manage Profile</h3>
+      <p>Keep your professional details updated and visible to employers.</p>
+    </div>
+  </div>
+</div>

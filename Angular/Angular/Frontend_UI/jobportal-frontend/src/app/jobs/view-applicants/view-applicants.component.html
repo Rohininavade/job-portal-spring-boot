@@ -1,0 +1,48 @@
+<div class="applicant-container">
+  <div *ngIf="apps.length === 0" class="no-applicants">
+      No applications received yet.
+    </div>
+  <div class="applicant-card" *ngFor="let app of apps">
+    <div class="header-row">
+      <h3>{{ app.applicant.name }}</h3>
+      <span class="status-pill" [ngClass]="app.status.toLowerCase()">
+        {{ app.status }}
+      </span>
+    </div>
+
+    <p><b>Email:</b> {{ app.applicant.email }}</p>
+    <p><b>Cover Letter:</b></p>
+    <div class="cover-letter-box">
+      {{ app.coverLetter }}
+    </div>
+
+    <!-- Custom Dropdown -->
+    <label class="dropdown-label">Update Status</label>
+    <div class="dropdown-wrapper">
+      <div class="dropdown-display" (click)="app.showOptions = !app.showOptions">
+        {{ app.newStatus || app.status }}
+        <span class="arrow">▼</span>
+      </div>
+
+      <div class="dropdown-options" *ngIf="app.showOptions">
+        <div class="option" (click)="selectStatus(app, 'APPLIED')">APPLIED</div>
+        <div class="option" (click)="selectStatus(app, 'SHORTLISTED')">SHORTLISTED</div>
+        <div class="option" (click)="selectStatus(app, 'REJECTED')">REJECTED</div>
+      </div>
+    </div>
+
+    <!-- Save button -->
+    <button 
+      *ngIf="app.newStatus !== app.status"
+      class="save-btn"
+      (click)="saveStatus(app)">
+      Save Changes
+    </button>
+
+  </div>
+</div>
+
+<!-- Success toast -->
+<div *ngIf="successMessage" class="success-msg">
+  {{ successMessage }}
+</div>
