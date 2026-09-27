@@ -1,0 +1,15 @@
+<div class="apps-container">
+  <div class="apps-card">
+    <h2>My Applications</h2>
+
+    <div *ngIf="apps.length === 0" class="no-apps">
+      You have not applied to any jobs yet.
+    </div>
+
+    <div *ngFor="let app of apps" class="job-card">
+      <h3>{{ app.job.title }}</h3>
+      <p><b>Company:</b> {{ app.job.company.name }}</p>
+      <p><b>Status:</b> {{ app.status }}</p>
+    </div>
+  </div>
+</div>

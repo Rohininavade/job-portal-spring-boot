@@ -1,0 +1,27 @@
+<div class="apply-container" *ngIf="job">
+
+  <div class="apply-card">
+
+    <h2>Apply for: <span>{{ job?.title }}</span></h2>
+    <p><b>Company:</b> {{ job?.companyName }}</p>
+    <p><b>Location:</b> {{ job?.location }}</p>
+
+    <!-- ALREADY APPLIED MESSAGE -->
+    <div *ngIf="alreadyApplied" class="already-box">
+      <p>You have already applied for this job.</p>
+      <button (click)="goBack()">Go Back</button>
+    </div>
+
+    <!-- APPLY FORM -->
+    <form *ngIf="!alreadyApplied" [formGroup]="form" (ngSubmit)="apply()">
+      <label>Cover Letter</label>
+      <textarea formControlName="coverLetter" rows="4"></textarea>
+
+      <label>Resume URL</label>
+      <input formControlName="resumeUrl" placeholder="https://your-resume-link" />
+
+      <button class="submit-btn" type="submit">Submit Application</button>
+    </form>
+
+  </div>
+</div>

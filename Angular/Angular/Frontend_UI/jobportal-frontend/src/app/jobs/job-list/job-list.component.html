@@ -1,0 +1,38 @@
+<div class="card">
+  <h2>Jobs</h2>
+
+  <form [formGroup]="form" (ngSubmit)="search()" class="search-form">
+    <input formControlName="q" placeholder="Search title..." />
+    <button type="submit">Search</button>
+  </form>
+
+  <div *ngIf="jobs.length === 0" class="no-jobs">No jobs found</div>
+
+  <div *ngFor="let job of jobs" class="job-card">
+    <div class="job-info">
+      <h3>{{ job.title }}</h3>
+      <p>{{ job.description | slice:0:200 }}...</p>
+      <p><b>Company:</b> {{ job.companyName }}</p>
+      <p><b>Location:</b> {{ job.location }}</p>
+      <p><b>Salary:</b> {{ job.stipendSalary }}</p>
+    </div>
+
+    <!-- Apply button appears only on hover -->
+    <!-- JOB_SEEKER → Apply Button -->
+    <button
+      class="apply-btn"
+      *ngIf="auth.isLoggedIn() && auth.getUserRole() === 'JOB_SEEKER'"
+      (click)="applyJob(job.id)">
+      Apply
+    </button>
+
+    <!-- COMPANY → View Applicants Button -->
+    <button
+      class="apply-btn"
+      *ngIf="auth.isLoggedIn() && auth.getUserRole() === 'COMPANY'"
+      (click)="viewApplicants(job.id)">
+      View Applicants
+    </button>
+
+  </div>
+</div>
